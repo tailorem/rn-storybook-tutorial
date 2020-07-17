@@ -1,7 +1,7 @@
-import { Ionicons } from '@expo/vector-icons';
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import * as React from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import * as React from "react";
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -12,10 +12,17 @@ export default function useCachedResources() {
       try {
         SplashScreen.preventAutoHideAsync();
 
+        // Load our initial navigation state
+        // setInitialNavigationState(await getInitialState());
+
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          "space-mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
+          percolate: require("../assets/icon/percolate.ttf"),
+          "NunitoSans-Bold": require("../assets/font/OpenSans-Regular-webfont.ttf"),
+          "NunitoSans-Italic": require("../assets/font/OpenSans-Regular-webfont.ttf"),
+          NunitoSans: require("../assets/font/OpenSans-Light-webfont.ttf"),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
